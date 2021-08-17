@@ -30,11 +30,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  Image cat = Image.asset('assets/POPCAT1.png');
+  Image cat = Image.asset(
+    'assets/POPCAT1.png',
+    width: 120,
+  );
 
   Image cat1 = Image.asset('assets/POPCAT1.png');
 
-  Image cat2 = Image.asset('assets/POPCAT2.jpg');
+  Image cat2 = Image.asset('assets/POPCAT2.png');
 
   void _incrementCounter() {
     setState(() {
