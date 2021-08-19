@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Image cat = Image.asset(
     'assets/POPCAT1.png',
-    width: 120,
+    //width: 120,
   );
 
   Image cat1 = Image.asset('assets/POPCAT1.png');
