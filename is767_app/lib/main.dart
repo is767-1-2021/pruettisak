@@ -14,7 +14,20 @@ class MyApp extends StatelessWidget {
         //scaffoldBackgroundColor: Colors.grey.shade200,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Home'),
+      //home: MyHomePage(title: 'Home'),
+      initialRoute: '/about',
+      routes: <String, WidgetBuilder>{
+        '/': (BuildContext context) {
+          return MyHomePage(title: 'Home');
+        },
+        '/about': (BuildContext context) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('About Route'),
+            ),
+          );
+        }
+      },
     );
   }
 }
@@ -66,22 +79,26 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.all(8.0),
               child: Container(
-                padding: EdgeInsets.all(20),
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 1,
-                          offset: Offset(0, 1))
-                    ]),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    cat,
+                    Container(
+                      height: 300,
+                      child: cat,
+                      margin: EdgeInsets.fromLTRB(50, 0, 50, 20),
+                      padding: EdgeInsets.all(20),
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          color: Colors.orange.shade100,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 1,
+                                blurRadius: 1,
+                                offset: Offset(0, 1))
+                          ]),
+                    ),
                     Text(
                       'You have pushed the button this many times:',
                     ),
@@ -137,5 +154,26 @@ class SubmitButton extends StatelessWidget {
         print('Pressing');
       },
     );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First Page'),
+        actions: [
+          IconButton(icon: Icon(Icons.account_balance), onPressed: () {})
+        ],
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }
