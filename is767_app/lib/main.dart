@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'screens/sixth_page.dart';
+import 'screens/fifth_page.dart';
+import 'screens/first_page.dart';
+import 'screens/fourth_page.dart';
+import 'screens/second_page.dart';
+import 'screens/third_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: Colors.yellow,
@@ -15,9 +22,15 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       //home: MyHomePage(title: 'Home'),
-      initialRoute: '/',
+      initialRoute: '/5',
       routes: {
         '/': (context) => MyHomePage(title: 'Home'),
+        '/1': (context) => FirstPage(),
+        '/2': (context) => SecondPage(),
+        '/3': (context) => ThirdPage(),
+        '/4': (context) => FourthPage(),
+        '/5': (context) => FifthPage(),
+        '/6': (context) => SixthPage()
       },
     );
   }
@@ -66,8 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
               icon: Icon(Icons.add_comment),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FirstPage()));
+                Navigator.pushNamed(context, '/fifth');
               })
         ],
       ),
@@ -153,186 +165,5 @@ class SubmitButton extends StatelessWidget {
         print('Pressing');
       },
     );
-  }
-}
-
-class FirstPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('First Page'),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.access_alarms)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.router)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.ac_unit))
-        ],
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Second Page', style: TextStyle(fontSize: 20)),
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => SecondPage()));
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Second Page'),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.account_box))],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ThirdPage()));
-        },
-        child: Icon(Icons.build),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Text('Here is the text format by Themedata',
-                style: TextStyle(fontSize: 20)),
-            Table(
-              children: [
-                TableRow(children: [
-                  Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Text(
-                        'No',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      )),
-                  Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Text('Name',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold))),
-                  Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Text('Gender',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)))
-                ]),
-                TableRow(children: [
-                  Text('1', style: TextStyle(fontSize: 16)),
-                  Text('Pruettisak', style: TextStyle(fontSize: 16)),
-                  Text('Male', style: TextStyle(fontSize: 16))
-                ]),
-                TableRow(children: [
-                  Text('2', style: TextStyle(fontSize: 16)),
-                  Text('Sararas', style: TextStyle(fontSize: 16)),
-                  Text('Female', style: TextStyle(fontSize: 16))
-                ]),
-                TableRow(children: [
-                  Text('3', style: TextStyle(fontSize: 16)),
-                  Text('Winai', style: TextStyle(fontSize: 16)),
-                  Text('Male', style: TextStyle(fontSize: 16))
-                ]),
-                TableRow(children: [
-                  Text('4', style: TextStyle(fontSize: 16)),
-                  Text('Jamchan', style: TextStyle(fontSize: 16)),
-                  Text('Female', style: TextStyle(fontSize: 16))
-                ])
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ThirdPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-        initialIndex: 0,
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Third Page'),
-            bottom: TabBar(tabs: [
-              Tab(icon: Icon(Icons.cloud)),
-              Tab(icon: Icon(Icons.beach_access)),
-              Tab(icon: Icon(Icons.wb_sunny))
-            ]),
-          ),
-          body: TabBarView(children: [
-            Center(
-              child: TextButton(
-                child: Text('Cloud'),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FourthPage()));
-                },
-              ),
-            ),
-            Center(
-              child: Text('Umbrella'),
-            ),
-            Center(
-              child: Text('Surfing'),
-            )
-          ]),
-        ));
-  }
-}
-
-class FourthPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final List<String> entries = <String>[
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O'
-    ];
-    final List<int> colorCodes = <int>[600, 500, 400, 300, 200, 100];
-
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Listview Example'),
-        ),
-        body: ListView.separated(
-          padding: EdgeInsets.all(8),
-          itemCount: entries.length,
-          itemBuilder: (context, index) {
-            return Container(
-              height: 50,
-              color: Colors.grey[colorCodes[index % 6]],
-              child: Center(
-                child: Text('Entry ${entries[index]}'),
-              ),
-            );
-          },
-          separatorBuilder: (context, index) => Divider(),
-        ));
   }
 }
