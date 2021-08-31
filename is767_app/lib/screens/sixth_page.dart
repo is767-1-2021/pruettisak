@@ -30,7 +30,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             child: TextFormField(
               decoration: InputDecoration(
                   border: UnderlineInputBorder(),
-                  prefixIcon: Icon(
+                  icon: Icon(
                     Icons.person,
                     color: Colors.grey,
                   ),
@@ -50,7 +50,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             child: TextFormField(
               decoration: InputDecoration(
                   border: UnderlineInputBorder(),
-                  prefixIcon: Icon(
+                  icon: Icon(
                     Icons.person,
                     color: Colors.grey,
                   ),
@@ -70,7 +70,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             child: TextFormField(
               decoration: InputDecoration(
                   border: UnderlineInputBorder(),
-                  prefixIcon: Icon(
+                  icon: Icon(
                     Icons.add_box,
                     color: Colors.grey,
                   ),
