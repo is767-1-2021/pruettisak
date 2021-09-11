@@ -12,7 +12,8 @@ class ForecastTableView extends StatelessWidget {
   final Tween<Color> textColorTween;
   final Forecast forecast;
 
-  ForecastTableView({this.textColorTween, this.controller, this.forecast, this.settings});
+  ForecastTableView(
+      {this.textColorTween, this.controller, this.forecast, this.settings});
 
   IconData _getWeatherIcon(Weather weather) {
     return AnimationUtil.weatherIcons[weather.description];
@@ -27,7 +28,7 @@ class ForecastTableView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textStyle = Theme.of(context).textTheme.body1;
+    var textStyle = Theme.of(context).textTheme.bodyText2;
     return Padding(
       padding: const EdgeInsets.only(
         left: 24.0,

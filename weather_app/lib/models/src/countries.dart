@@ -8,8 +8,8 @@ class Country {
   final String name;
 
   const Country({
-    @required this.dialingCode,
-    @required this.isoCode,
+    this.dialingCode,
+    this.isoCode,
     this.name = "",
   });
 
