@@ -19,6 +19,10 @@ class MyCustomForm extends StatefulWidget {
 
 class _MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
+  String _firstName;
+  String _lastName;
+  int _age;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -35,13 +39,16 @@ class _MyCustomFormState extends State<MyCustomForm> {
                     color: Colors.grey,
                   ),
                   labelText: 'Firstname',
-                  hintText: 'Enter ypur firstname',
+                  hintText: 'Enter your firstname',
                   labelStyle: TextStyle(color: Colors.black, fontSize: 20)),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter fisrtname.';
+                  return 'Please enter firstname.';
                 }
                 return null;
+              },
+              onSaved: (value) {
+                _firstName = value;
               },
             ),
           ),
@@ -55,13 +62,16 @@ class _MyCustomFormState extends State<MyCustomForm> {
                     color: Colors.grey,
                   ),
                   labelText: 'Lastname',
-                  hintText: 'Enter ypur lastname',
+                  hintText: 'Enter your lastname',
                   labelStyle: TextStyle(color: Colors.black, fontSize: 20)),
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter lastname.';
                 }
                 return null;
+              },
+              onSaved: (value) {
+                _lastName = value;
               },
             ),
           ),
@@ -87,11 +97,20 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 }
                 return null;
               },
+              onSaved: (value) {
+                _age = int.parse(value);
+              },
             ),
           ),
           ElevatedButton(
             onPressed: () {
               if (_formKey.currentState.validate()) {
+                _formKey.currentState.save();
+
+                var response = 'Hoorayyyy = $_firstName $_lastName Age: $_age';
+
+                Navigator.pop(context, response);
+
                 print('--------------------------------');
                 print('Hooray!!!!!!!!!!!!!!!!!!!!!!!!!');
                 print('--------------------------------');
